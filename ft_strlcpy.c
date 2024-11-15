@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esteudle <esteudle@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 12:12:29 by esteudle          #+#    #+#             */
-/*   Updated: 2024/11/15 12:13:20 by esteudle         ###   ########.fr       */
+/*   Created: 2024/11/09 10:43:12 by esteudle          #+#    #+#             */
+/*   Updated: 2024/11/09 12:05:51 by esteudle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <unistd.h>
 
-void	ft_putstr_fd(char *s, int fd)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	int	i;
+	size_t	i;
 
+	if (size == 0)
+		return (ft_strlen(src));
 	i = 0;
-	while (s[i])
+	while (src[i] != '\0' && i < (size - 1))
 	{
-		write(fd, &s[i], 1);
+		dest[i] = src[i];
 		i++;
 	}
+	dest[i] = '\0';
+	return (ft_strlen(src));
 }
 /*
-#include <fcntl.h>
-
-int main ()
+int	main()
 {
-	int fd = open("test.txt", O_WRONLY | O_CREAT, 0644);
-	if (fd != -1)
-	{	
-		ft_putstr_fd("Hello, I am a string", fd);
-		close(fd);
-	}
-	return (0);
+	const char src[] = "Herzlich wilkommen!";
+	char dest[3];
+	printf("%zu\n", ft_strlcpy(dest, src, 5));
+	printf("%s\n", dest);
 }
 */

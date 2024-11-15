@@ -1,39 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esteudle <esteudle@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 12:12:29 by esteudle          #+#    #+#             */
-/*   Updated: 2024/11/15 12:13:20 by esteudle         ###   ########.fr       */
+/*   Created: 2024/11/15 12:15:00 by esteudle          #+#    #+#             */
+/*   Updated: 2024/11/15 16:47:13 by esteudle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 #include <unistd.h>
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
+	char	c;
+	long	nbr;
+	
+	nbr = n;
+	if (nbr < 0)
 	{
-		write(fd, &s[i], 1);
-		i++;
+		write(fd, "-", 1);
+		nbr = -nbr;
+	}
+	if (nbr >= 10)
+	{
+		ft_putnbr_fd(nbr / 10, fd);
+		nbr = nbr % 10;
+	}
+	if (nbr < 10)
+	{
+		c = nbr + '0';
+		printf("%d", nbr);
+		write (fd, &c, 1);
 	}
 }
-/*
 #include <fcntl.h>
 
 int main ()
 {
-	int fd = open("test.txt", O_WRONLY | O_CREAT, 0644);
+	int fd = open ("text.txt", O_WRONLY | O_CREAT, 0644);
 	if (fd != -1)
-	{	
-		ft_putstr_fd("Hello, I am a string", fd);
+	{
+		ft_putnbr_fd(-90, fd);
 		close(fd);
 	}
 	return (0);
 }
-*/
+		
+
+

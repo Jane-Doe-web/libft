@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esteudle <esteudle@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 12:12:29 by esteudle          #+#    #+#             */
-/*   Updated: 2024/11/15 12:13:20 by esteudle         ###   ########.fr       */
+/*   Created: 2024/11/09 12:08:27 by esteudle          #+#    #+#             */
+/*   Updated: 2024/11/09 14:57:01 by esteudle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <unistd.h>
 
-void	ft_putstr_fd(char *s, int fd)
+size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	int	i;
+	size_t	s_len;
+	size_t	d_len;
+	size_t	i;
 
+	s_len = ft_strlen(src);
+	d_len = ft_strlen(dst);
+	if (size <= d_len)
+		return (s_len + size);
 	i = 0;
-	while (s[i])
+	while (src[i] && (d_len + i) < size - 1)
 	{
-		write(fd, &s[i], 1);
+		dst[d_len + i] = src[i];
 		i++;
 	}
+	dst[d_len + i] = '\0';
+	return (d_len + s_len);
 }
 /*
-#include <fcntl.h>
-
-int main ()
-{
-	int fd = open("test.txt", O_WRONLY | O_CREAT, 0644);
-	if (fd != -1)
-	{	
-		ft_putstr_fd("Hello, I am a string", fd);
-		close(fd);
-	}
-	return (0);
+int 	main()
+{	
+	char dst[20] = "pqrstuvwxyz";
+	printf("%zu\n", ft_strlcat(dst, "abcd", 14));
+	printf("%s\n", dst);
 }
 */

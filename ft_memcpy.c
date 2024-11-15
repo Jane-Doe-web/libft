@@ -1,39 +1,44 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esteudle <esteudle@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 12:12:29 by esteudle          #+#    #+#             */
-/*   Updated: 2024/11/15 12:13:20 by esteudle         ###   ########.fr       */
+/*   Created: 2024/11/09 14:57:28 by esteudle          #+#    #+#             */
+/*   Updated: 2024/11/15 16:54:42 by esteudle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <unistd.h>
+#include <string.h>
 
-void	ft_putstr_fd(char *s, int fd)
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int	i;
+	unsigned char	*d;
+	unsigned char	*s;
+	size_t			i;
 
+	if (dest == NULL && src == NULL)
+		return (NULL);
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
 	i = 0;
-	while (s[i])
+	while (i < n)
 	{
-		write(fd, &s[i], 1);
+		d[i] = s[i];
 		i++;
 	}
+	return (dest);
 }
 /*
-#include <fcntl.h>
+#include <stdio.h>
 
-int main ()
+int main()
 {
-	int fd = open("test.txt", O_WRONLY | O_CREAT, 0644);
-	if (fd != -1)
-	{	
-		ft_putstr_fd("Hello, I am a string", fd);
-		close(fd);
-	}
-	return (0);
-}
-*/
+	char dest[50];
+	char src[] = "";
+	size_t n = 5;
+	ft_memcpy(dest, src, n);
+	dest[n] = '\0';
+	printf("%s", dest);
+}*/

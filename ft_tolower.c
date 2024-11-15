@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esteudle <esteudle@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 12:12:29 by esteudle          #+#    #+#             */
-/*   Updated: 2024/11/15 12:13:20 by esteudle         ###   ########.fr       */
+/*   Created: 2024/11/08 11:22:23 by esteudle          #+#    #+#             */
+/*   Updated: 2024/11/08 11:26:24 by esteudle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <unistd.h>
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_tolower(int c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
+	if (c >= 'A' && c <= 'Z')
 	{
-		write(fd, &s[i], 1);
-		i++;
+		return (c + 32);
 	}
+	return (c);
 }
 /*
-#include <fcntl.h>
-
-int main ()
+#include <stdio.h>
+int	main()
 {
-	int fd = open("test.txt", O_WRONLY | O_CREAT, 0644);
-	if (fd != -1)
-	{	
-		ft_putstr_fd("Hello, I am a string", fd);
-		close(fd);
-	}
-	return (0);
+	unsigned char c;
+	c = '1';
+	printf("%c\n", ft_tolower(c));
+	c = 't';
+	printf("%c\n", ft_tolower(c));
+	c = 'R';
+        printf("%c\n", ft_tolower(c));
+	c = '\n';
+        printf("%c", ft_tolower(c));
 }
 */

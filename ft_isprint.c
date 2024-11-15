@@ -1,39 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esteudle <esteudle@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 12:12:29 by esteudle          #+#    #+#             */
-/*   Updated: 2024/11/15 12:13:20 by esteudle         ###   ########.fr       */
+/*   Created: 2024/11/07 18:47:46 by esteudle          #+#    #+#             */
+/*   Updated: 2024/11/07 18:52:44 by esteudle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <unistd.h>
 
-void	ft_putstr_fd(char *s, int fd)
+int	ft_isprint(int c)
 {
-	int	i;
-
-	i = 0;
-	while (s[i])
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
+	return (c >= 32 && c <= 126);
 }
 /*
-#include <fcntl.h>
-
-int main ()
+#include <stdio.h>
+#include <ctype.h>
+int	main()
 {
-	int fd = open("test.txt", O_WRONLY | O_CREAT, 0644);
-	if (fd != -1)
-	{	
-		ft_putstr_fd("Hello, I am a string", fd);
-		close(fd);
-	}
-	return (0);
+	printf("%d\n", ft_isprint('\n'));
+	printf("%d\n", isprint('\n'));
+	printf("%d\n", ft_isprint('A'));
+        printf("%d\n", isprint('A'));
 }
 */

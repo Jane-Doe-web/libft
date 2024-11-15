@@ -1,39 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esteudle <esteudle@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 12:12:29 by esteudle          #+#    #+#             */
-/*   Updated: 2024/11/15 12:13:20 by esteudle         ###   ########.fr       */
+/*   Created: 2024/11/07 19:13:25 by esteudle          #+#    #+#             */
+/*   Updated: 2024/11/08 18:27:23 by esteudle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <unistd.h>
+#include <string.h>
 
-void	ft_putstr_fd(char *s, int fd)
+void	*ft_memset(void *s, int c, size_t n)
 {
-	int	i;
+	unsigned char	*s1;
+	size_t			i;
 
+	s1 = (unsigned char *)s;
 	i = 0;
-	while (s[i])
+	while (i < n)
 	{
-		write(fd, &s[i], 1);
+		s1[i] = (unsigned char)c;
 		i++;
 	}
+	return (s);
 }
 /*
-#include <fcntl.h>
+#include <stdio.h>
 
-int main ()
+int	main()
 {
-	int fd = open("test.txt", O_WRONLY | O_CREAT, 0644);
-	if (fd != -1)
-	{	
-		ft_putstr_fd("Hello, I am a string", fd);
-		close(fd);
-	}
-	return (0);
+	size_t n;
+	char s[20] = "Berlin Berlin";	
+	char c;
+	int j;
+
+
+	j = 0;
+	c = 'B';
+	n = 7;
+	ft_memset(s, c, n);
+	printf("%s", s);	
 }
 */
