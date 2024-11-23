@@ -14,33 +14,25 @@
 
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char	*s1;
 	char	*substr;
-	size_t	i;
 
-	s1 = (char *)s;
 	if (!s)
 		return (NULL);
 	if (start >= ft_strlen(s))
 	{
 		substr = malloc(1);
-		if (!substr) 
+		if (!substr)
 			return (NULL);
 		substr[0] = '\0';
 		return (substr);
 	}
 	if (len > ft_strlen(s) - start)
 		len = ft_strlen(s) - start;
-	substr = malloc(ft_strlen(s) - start + 1);
+	substr = malloc(len + 1);
 	if (!substr)
 		return (NULL);
-	i = 0;
-	while (i < len)
-	{
-		substr[i] = s1[start + i];
-		i++;
-	}
-	substr[i] = '\0';
+	ft_memcpy(substr, s + start, len);
+	substr[len] = '\0';
 	return (substr);
 }
 /*

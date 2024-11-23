@@ -26,37 +26,44 @@ static char	*ft_strcpy(char	*dest, const char *src)
 	return (dest);
 }
 
+static char	*ft_strcat(char *dest, const char *src)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (dest[i] != '\0')
+	{
+		i++;
+	}
+	j = 0;
+	while (src[j] != '\0')
+	{
+		dest[i] = src[j];
+		i++;
+		j++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*str1;
-	char	*str2;
 	char	*str12;
-	int		i;
-	int		j;
 
 	if (s1[0] == '\0' && s2[0] == '\0')
 	{
 		str12 = malloc(1);
-		if (!str12) 
+		if (!str12)
 			return (NULL);
 		str12[0] = '\0';
 		return (str12);
 	}
-	str1 = (char *)s1;
-	str2 = (char *)s2;
-	str12 = malloc(ft_strlen(str1) + ft_strlen(str2) + 1);
+	str12 = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
 	if (!str12)
 		return (NULL);
-	ft_strcpy(str12, str1);
-	i = ft_strlen(str12);
-	j = 0;
-	while (str2[j])
-	{
-		str12[i] = str2[j];
-		i++;
-		j++;
-	}
-	str12[i] = '\0';
+	ft_strcpy(str12, s1);
+	ft_strcat(str12, s2);
 	return (str12);
 }
 /*
@@ -65,6 +72,14 @@ int	main()
 	char const *s1 = "Bundes";
 	char const *s2 = "verwaltungsamt";
 	char const *s12 = ft_strjoin(s1, s2);
-	printf("%s", s12);
+	if (s12)
+	{
+		printf("%s", s12);
+		free((char*)s12);
+	}
+	else
+	{
+		printf("Malloc failed");
+	}
 }
 */

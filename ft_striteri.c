@@ -1,50 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: esteudle <esteudle@student.42berlin.d      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/15 12:15:00 by esteudle          #+#    #+#             */
-/*   Updated: 2024/11/16 16:25:14 by esteudle         ###   ########.fr       */
+/*   Created: 2024/11/16 17:13:07 by esteudle          #+#    #+#             */
+/*   Updated: 2024/11/16 17:14:02 by esteudle         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
-#include <unistd.h>
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	char	c;
-	long	nbr;
+	int	i;
 
-	nbr = n;
-	if (nbr < 0)
+	i = 0;
+	while (s[i])
 	{
-		write(fd, "-", 1);
-		nbr = -nbr;
-	}
-	if (nbr >= 10)
-	{
-		ft_putnbr_fd(nbr / 10, fd);
-		nbr = nbr % 10;
-	}
-	if (nbr < 10)
-	{
-		c = nbr + '0';
-		write (fd, &c, 1);
+		f(i, &s[i]);
+		i++;
 	}
 }
 /*
-#include <fcntl.h>
-
-int main ()
+void	f(unsigned int i, char *c)
 {
-	int fd = open ("text.txt", O_WRONLY | O_CREAT, 0644);
-	if (fd != -1)
-	{
-		ft_putnbr_fd(-90, fd);
-		close(fd);
-	}
-	return (0);
+	*c += 1;
 }
-*/
+#include <stdio.h>
+
+int	main()
+{	
+	char	s [] = "12345";
+	ft_striteri(s, f);
+	printf("%s", s);
+}*/
