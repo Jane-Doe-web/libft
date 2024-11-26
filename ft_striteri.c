@@ -25,6 +25,7 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 /*
 void	f(unsigned int i, char *c)
 {
+	printf("Index: %u, Character: %c\n", i, *c);
 	*c += 1;
 }
 #include <stdio.h>

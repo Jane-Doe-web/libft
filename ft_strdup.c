@@ -29,3 +29,18 @@ char	*ft_strdup(char *src)
 	dest[i] = '\0';
 	return (dest);
 }
+/*
+int main()
+{
+	char *original = "Hallochen!";
+	char *duplicate = ft_strdup(original);
+	
+	if (duplicate)
+	{
+		printf("Original: %s\n", original);
+		printf("Duplicate: %s\n", duplicate);
+		free(duplicate);
+	}
+	else
+		printf("Memory allocation failed\n");
+}*/

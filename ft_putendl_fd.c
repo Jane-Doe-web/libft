@@ -35,6 +35,5 @@ int main()
 		ft_putendl_fd("Hello, I am a string", fd);
 		close(fd);
 	}
-	return (0);
 }
 */

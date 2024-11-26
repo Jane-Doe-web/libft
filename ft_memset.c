@@ -34,10 +34,7 @@ int	main()
 	size_t n;
 	char s[20] = "Berlin Berlin";	
 	char c;
-	int j;
 
-
-	j = 0;
 	c = 'B';
 	n = 7;
 	ft_memset(s, c, n);

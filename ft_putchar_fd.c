@@ -27,6 +27,5 @@ int main()
 		ft_putchar_fd('X', fd);
 		close(fd);
 	}
-	return (0);
 }
 */

@@ -34,6 +34,5 @@ int main ()
 		ft_putstr_fd("Hello, I am a string", fd);
 		close(fd);
 	}
-	return (0);
 }
 */

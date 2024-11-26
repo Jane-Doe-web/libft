@@ -39,12 +39,11 @@ void	ft_putnbr_fd(int n, int fd)
 
 int main ()
 {
-	int fd = open ("text.txt", O_WRONLY | O_CREAT, 0644);
+	int fd = open ("test.txt", O_WRONLY | O_CREAT, 0644);
 	if (fd != -1)
 	{
 		ft_putnbr_fd(-90, fd);
 		close(fd);
 	}
-	return (0);
 }
 */
